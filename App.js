@@ -1,28 +1,19 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import HomeScreen from './screens/HomeScreen';
+import AboutScreen from './screens/AboutScreen';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.heading}>Welcome to My First App!</Text>
-      <Text style={styles.text}>You're building this in React Native 🚀</Text>
-    </View>
-  );
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="About" component={AboutScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
-//hello
-const styles = StyleSheet.create({
-  container: {
-    flex: 1, // take full screen
-    justifyContent: 'center', // center vertically
-    alignItems: 'center', // center horizontally
-    backgroundColor: '#f5f5f5',
-  },
-  heading: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
-  text: {
-    fontSize: 16,
-  },
-});
